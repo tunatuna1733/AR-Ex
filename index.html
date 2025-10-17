@@ -14,13 +14,23 @@
     </head>
     <body>
         <a-scene embedded arjs>
+            <a-assets>
+                <img
+                    id="weather-image"
+                    src="https://placehold.co/150"
+                    crossorigin="anonymous"
+                />
+            </a-assets>
+
             <a-marker preset="hiro">
-                <a-box position="0 1 0"></a-box>
+                <a-box position="0 1 0" />
+                <a-image id="weather-image-a" position="-1 0 0" src="#weather-image" />
                 <a-text
+                    class="weather-info"
                     value="TEST"
                     position="0 0 0"
                     align="center"
-                ></a-text>
+                />
             </a-marker>
 
             <a-entity camera></a-entity>

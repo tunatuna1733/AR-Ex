@@ -15,7 +15,7 @@ const getCurrentPosition = async (): Promise<GeolocationPosition> => {
   });
 };
 
-const _getWeather = async () => {
+const getWeather = async () => {
   const position = await getCurrentPosition();
   const { latitude, longitude } = position.coords;
   const areaUrl = `https://geocoord-api-jp.tunatuna1733.deno.net/jma_area?latitude=${latitude}&longitude=${longitude}`;
@@ -41,4 +41,8 @@ const _getWeather = async () => {
   return data;
 };
 
-console.log(await _getWeather());
+const weather = await getWeather();
+const weatherCodeImage = `https://www.jma.go.jp/bosai/forecast/img/${weather.weatherCode}.png`;
+document.querySelector('#weather-info')?.setAttribute('src', weatherCodeImage);
+document.querySelector('#weather-image-a')?.setAttribute('src', weatherCodeImage);
+console.log(weatherCodeImage);
