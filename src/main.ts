@@ -43,6 +43,10 @@ const getWeather = async () => {
 
 const weather = await getWeather();
 const weatherCodeImage = `https://www.jma.go.jp/bosai/forecast/img/${weather.weatherCode}.png`;
-document.querySelector('#weather-info')?.setAttribute('src', weatherCodeImage);
 document.querySelector('#weather-image-a')?.setAttribute('src', weatherCodeImage);
-console.log(weatherCodeImage);
+document
+  .querySelector('.weather-info')
+  ?.setAttribute(
+    'value',
+    `Weather: ${weather.weatherDescription.split('　').join('\n')}\n降水確率: ${weather.pop}%\n気温: ${weather.temp}度`,
+  );
